@@ -5,7 +5,9 @@ import classes from "./CartButton.module.css";
 const CartButton = (props) => {
   const dispatch = useDispatch();
 
-  const toggleCartHandler = () => {};
+  const toggleCartHandler = () => {
+    dispatch(uiActions.toggle());
+  };
 
   return (
     <button className={classes.button} onClick={toggleCartHandler}>
