@@ -19,6 +19,9 @@ createSlice({
           totalPrice: newItem.price,
           name: newItem.title,
         });
+      } else {
+        existingItem.quantity++;
+        existingItem.totalPrice = existingItem.totalPrice + newItem.price;
       }
     },
     removeItemFromCart() {},
