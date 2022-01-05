@@ -9,11 +9,17 @@ const CartItem = (props) => {
   const dispatch = useDispatch();
 
   const removeItemHandler = () => {
-    dispatch(cartActions.removeItemFromCart());
+    dispatch(cartActions.removeItemFromCart(id));
   };
 
   const addItemHandler = () => {
-    dispatch(cartActions.addItemToCart());
+    dispatch(
+      cartActions.addItemToCart({
+        id,
+        title,
+        price,
+      })
+    );
   };
 
   return (
