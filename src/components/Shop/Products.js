@@ -1,12 +1,20 @@
 import ProductItem from "./ProductItem";
 import classes from "./Products.module.css";
 
-const DUMMY_PRODUCTS = {
-  id: "p1",
-  price: 6,
-  title: "my first book",
-  description: "The 1st book I ever wrote",
-};
+const DUMMY_PRODUCTS = [
+  {
+    id: "p1",
+    price: 6,
+    title: "my first book",
+    description: "The 1st book I ever wrote",
+  },
+  {
+    id: "p2",
+    price: 5.75,
+    title: "my second book",
+    description: "The 2nd book I ever wrote",
+  },
+];
 
 const Products = (props) => {
   return (
