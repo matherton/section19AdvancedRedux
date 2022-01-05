@@ -13,6 +13,7 @@ const Cart = (props) => {
       <ul>
         {cartItems.map((item) => (
           <CartItem
+            key={item.id}
             item={{
               title: item.name,
               quantity: item.quantity,
