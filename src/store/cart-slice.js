@@ -31,6 +31,7 @@ createSlice({
         state.items = state.item.filter((item) => item.id === id);
       } else {
         existingItem.quantity--;
+        existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
       }
     },
   },
