@@ -11,9 +11,9 @@ function App() {
   useEffect(() => {
     fetch(
       "https://react-http-4b88b-default-rtdb.europe-west1.firebasedatabase.app/cart.json",
-      { method: "put" }
+      { method: "put", body: JSON.stringify(cart) }
     );
-  }, [showCart]);
+  }, [cart]);
   return (
     <Layout>
       {showCart && <Cart />}
