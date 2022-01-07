@@ -25,13 +25,7 @@ function App() {
         { method: "put", body: JSON.stringify(cart) }
       );
       if (!response.ok) {
-        dispatch(
-          uiActions.showNotification({
-            status: "ERROR",
-            title: "error",
-            message: "ERROR did not cart data!",
-          })
-        );
+        throw new Error("sending cart data to firebase failed");
       }
 
       dispatch(
@@ -42,7 +36,17 @@ function App() {
         })
       );
     };
-  }, [cart]);
+
+    sendCartData().catch((error) => {
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error...",
+          message: "ERROR sending cart data!",
+        })
+      );
+    });
+  }, [cart, dispatch]);
   return (
     <Layout>
       {showCart && <Cart />}
