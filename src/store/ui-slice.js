@@ -4,6 +4,7 @@ const uiSlice = createSlice({
   name: "ui",
   initialState: {
     cartIsVisible: false,
+    notification: null,
   },
   reducers: {
     toggle(state) {
