@@ -28,7 +28,13 @@ function App() {
         throw new Error("sending cart data to firebase failed");
       }
 
-      const responeData = await response.json();
+      dispatch(
+        uiActions.showNotification({
+          status: "SUCCESS",
+          title: "sent",
+          message: "Sent cart data!",
+        })
+      );
     };
   }, [cart]);
   return (
