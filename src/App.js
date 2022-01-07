@@ -10,7 +10,9 @@ import { uiActions } from "./store/ui-slice";
 function App() {
   const showCart = useSelector((state) => state.ui.cartIsVisible);
   const cart = useSelector((state) => state.cart);
+  const notification = useSelector((state) => state.showNotification);
   const dispatch = useDispatch();
+
   useEffect(() => {
     const sendCartData = async () => {
       dispatch(
