@@ -52,7 +52,13 @@ function App() {
   }, [cart, dispatch]);
   return (
     <>
-      {notification && <Notification />}
+      {notification && (
+        <Notification
+          status={notification.status}
+          message={notification.message}
+          title={notification.title}
+        />
+      )}
       <Layout>
         {showCart && <Cart />}
         <Products />
