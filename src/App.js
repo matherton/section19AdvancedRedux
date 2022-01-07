@@ -25,7 +25,13 @@ function App() {
         { method: "put", body: JSON.stringify(cart) }
       );
       if (!response.ok) {
-        throw new Error("sending cart data to firebase failed");
+        dispatch(
+          uiActions.showNotification({
+            status: "ERROR",
+            title: "error",
+            message: "ERROR did not cart data!",
+          })
+        );
       }
 
       dispatch(
