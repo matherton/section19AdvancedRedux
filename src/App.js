@@ -17,30 +17,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const sendCartData = async () => {
-      dispatch(
-        uiActions.showNotification({
-          status: "pending",
-          title: "sending...",
-          message: "Sending cart data!",
-        })
-      );
-      const response = await fetch(
-        "https://react-http-4b88b-default-rtdb.europe-west1.firebasedatabase.app/cart.json",
-        { method: "put", body: JSON.stringify(cart) }
-      );
-      if (!response.ok) {
-        throw new Error("sending cart data to firebase failed");
-      }
-
-      dispatch(
-        uiActions.showNotification({
-          status: "success",
-          title: "sent",
-          message: "Sent cart data!",
-        })
-      );
-    };
+    const sendCartData = async () => {};
 
     if (isInitial) {
       isInitial = false;
