@@ -14,7 +14,12 @@ function App() {
   const notification = useSelector((state) => state.ui.notification);
   const dispatch = useDispatch();
 
-  useEffect(() => {}, [cart, dispatch]);
+  useEffect(() => {
+    if (isInitial) {
+      isInitial = false;
+      return;
+    }
+  }, [cart, dispatch]);
 
   return (
     <>
