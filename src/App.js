@@ -6,6 +6,8 @@ import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
 import Notification from "./components/UI/Notification";
 
+import { sendCardData } from "./store/cart-slice";
+
 let isInitial = true;
 
 function App() {
