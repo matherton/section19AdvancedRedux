@@ -16,24 +16,8 @@ function App() {
   const notification = useSelector((state) => state.ui.notification);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const sendCartData = async () => {};
+  useEffect(() => {}, [cart, dispatch]);
 
-    if (isInitial) {
-      isInitial = false;
-      return;
-    }
-
-    sendCartData().catch((error) => {
-      dispatch(
-        uiActions.showNotification({
-          status: "error",
-          title: "Error...",
-          message: "ERROR sending cart data!",
-        })
-      );
-    });
-  }, [cart, dispatch]);
   return (
     <>
       {notification && (
