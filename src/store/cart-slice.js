@@ -61,15 +61,25 @@ const sendCardData = (cart) => {
       }
     };
 
-    await sendRequest();
+    try {
+      await sendRequest();
 
-    dispatch(
-      uiActions.showNotification({
-        status: "success",
-        title: "sent",
-        message: "Sent cart data!",
-      })
-    );
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          title: "sent",
+          message: "Sent cart data!",
+        })
+      );
+    } catch (error) {
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error...",
+          message: "ERROR sending cart data!",
+        })
+      );
+    }
   };
 };
 
