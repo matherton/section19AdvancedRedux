@@ -21,6 +21,7 @@ function App() {
       isInitial = false;
       return;
     }
+    dispatch(sendCardData(cart));
   }, [cart, dispatch]);
 
   return (
