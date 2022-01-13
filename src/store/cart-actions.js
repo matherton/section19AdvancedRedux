@@ -1,4 +1,3 @@
-import { get } from "@reduxjs/toolkit/node_modules/immer/dist/internal";
 import { uiActions } from "./ui-slice";
 
 export const fetchCartData = () => {
@@ -7,6 +6,12 @@ export const fetchCartData = () => {
       const response = await fetch(
         "https://react-http-4b88b-default-rtdb.europe-west1.firebasedatabase.app/cart.json"
       );
+
+      if (!response.ok) {
+        throw new Error("could not fetch cart data!!!");
+      }
+
+      const data = await response.json();
     };
   };
 };
