@@ -1,4 +1,5 @@
 import { uiActions } from "./ui-slice";
+import { cartActions } from "./cart-slice";
 
 export const fetchCartData = () => {
   return async (dispatch) => {
@@ -16,7 +17,8 @@ export const fetchCartData = () => {
       return data;
     };
     try {
-      await fetchData();
+      const cartData = await fetchData();
+      dispatch(cartActions.replaceCart(cartData));
     } catch (error) {
       dispatch(
         uiActions.showNotification({
