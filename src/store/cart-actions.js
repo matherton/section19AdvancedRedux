@@ -1,7 +1,7 @@
 import { uiActions } from "./ui-slice";
 
 export const fetchCartData = () => {
-  return (dispatch) => {
+  return async (dispatch) => {
     const fetchData = async () => {
       const response = await fetch(
         "https://react-http-4b88b-default-rtdb.europe-west1.firebasedatabase.app/cart.json"
@@ -16,7 +16,7 @@ export const fetchCartData = () => {
       return data;
     };
     try {
-      fetchData();
+      await fetchData();
     } catch (error) {
       dispatch(
         uiActions.showNotification({
