@@ -14,6 +14,12 @@ const DUMMY_PRODUCTS = [
     title: "my second book",
     description: "The 2nd book I ever wrote",
   },
+  {
+    id: "p3",
+    price: 12.75,
+    title: "Twarn",
+    description: "By Anthony Zahn",
+  },
 ];
 
 const Products = (props) => {
