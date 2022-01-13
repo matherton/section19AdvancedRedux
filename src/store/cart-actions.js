@@ -12,7 +12,20 @@ export const fetchCartData = () => {
       }
 
       const data = await response.json();
+
+      return data;
     };
+    try {
+      fetchData();
+    } catch (error) {
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          title: "Error...",
+          message: "Fetching Cart data failed!",
+        })
+      );
+    }
   };
 };
 
