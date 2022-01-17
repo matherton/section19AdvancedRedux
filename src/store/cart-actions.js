@@ -44,7 +44,13 @@ export const sendCardData = (cart) => {
     const sendRequest = async () => {
       const response = await fetch(
         "https://react-http-4b88b-default-rtdb.europe-west1.firebasedatabase.app/cart.json",
-        { method: "put", body: JSON.stringify(cart) }
+        {
+          method: "put",
+          body: JSON.stringify({
+            items: cart.items,
+            totalQuantity: cart.totalQuantity,
+          }),
+        }
       );
 
       if (!response.ok) {
