@@ -6,7 +6,7 @@ import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
 import Notification from "./components/UI/Notification";
 
-import { sendCardData, fetchCartData } from "./store/cart-actions";
+import { sendCartData, fetchCartData } from "./store/cart-actions";
 
 let isInitial = true;
 
@@ -26,7 +26,7 @@ function App() {
       return;
     }
     if (cart.changed) {
-      dispatch(sendCardData(cart));
+      dispatch(sendCartData(cart));
     }
   }, [cart, dispatch]);
 

@@ -5,52 +5,53 @@ export const fetchCartData = () => {
   return async (dispatch) => {
     const fetchData = async () => {
       const response = await fetch(
-        "https://react-http-4b88b-default-rtdb.europe-west1.firebasedatabase.app/cart.json"
+        "https://react-http-6b4a6.firebaseio.com/cart.json"
       );
 
       if (!response.ok) {
-        throw new Error("could not fetch cart data!!!");
+        throw new Error("Could not fetch cart data!");
       }
 
       const data = await response.json();
 
       return data;
     };
+
     try {
       const cartData = await fetchData();
       dispatch(
         cartActions.replaceCart({
           items: cartData.items || [],
-          totalPrice: cartData.totalPrice,
+          totalQuantity: cartData.totalQuantity,
         })
       );
     } catch (error) {
       dispatch(
         uiActions.showNotification({
           status: "error",
-          title: "Error...",
-          message: "Fetching Cart data failed!",
+          title: "Error!",
+          message: "Fetching cart data failed!",
         })
       );
     }
   };
 };
 
-export const sendCardData = (cart) => {
+export const sendCartData = (cart) => {
   return async (dispatch) => {
     dispatch(
       uiActions.showNotification({
         status: "pending",
-        title: "sending...",
+        title: "Sending...",
         message: "Sending cart data!",
       })
     );
 
     const sendRequest = async () => {
       const response = await fetch(
-        "https://react-http-4b88b-default-rtdb.europe-west1.firebasedatabase.app/cart.json",
+        "https://react-http-6b4a6.firebaseio.com/cart.json",
         {
-          method: "put",
+          method: "PUT",
           body: JSON.stringify({
             items: cart.items,
             totalQuantity: cart.totalQuantity,
@@ -59,7 +60,7 @@ export const sendCardData = (cart) => {
       );
 
       if (!response.ok) {
-        throw new Error("sending cart data to firebase failed");
+        throw new Error("Sending cart data failed.");
       }
     };
 
@@ -69,16 +70,16 @@ export const sendCardData = (cart) => {
       dispatch(
         uiActions.showNotification({
           status: "success",
-          title: "sent",
-          message: "Sent cart data!",
+          title: "Success!",
+          message: "Sent cart data successfully!",
         })
       );
     } catch (error) {
       dispatch(
         uiActions.showNotification({
           status: "error",
-          title: "Error...",
-          message: "ERROR sending cart data!",
+          title: "Error!",
+          message: "Sending cart data failed!",
         })
       );
     }
